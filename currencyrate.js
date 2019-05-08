@@ -21,9 +21,15 @@ else {
 
         response.on('end', () => {
             let result = JSON.parse(data);
-            console.log(`Date: ${date.slice(-2)}/${date.slice(4, -2)}/${date.slice(0, -4)}`);
-            console.log(`${result[0].txt}(${result[0].cc})`);
-            console.log(`${result[0].rate} UAH`);
+            if (result.length !== 0) {
+                console.log(`Date: ${date.slice(-2)}/${date.slice(4, -2)}/${date.slice(0, -4)}`);
+                console.log(`${result[0].txt}(${result[0].cc})`);
+                console.log(`${result[0].rate} UAH`);
+            }
+            else {
+                console.log('There is no any results for this date and currency. Please check input parameters');
+            }
+            
         });
 
     }).on('error', (err) => {
